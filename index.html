@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="data:,">
+        <link rel=""manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <h1>Patient Dashboard</h1>
+        <p>Today: <time datetime="2026-03-29">Sunday, March 29, 2026</time></p>
+    </header>
+
+    <main>
+        <section aria-labelledby="actions-heading">
+            <h2 id="actions-heading" class="sr-only">Main Actions</h2>
+            <div class="button-group">
+                <button type="button" class="btn btn-medication" id="btn-medication">
+                    <span class="btn-icon" aria-hidden="true">💊</span>
+                    <span class="btn-label">Medication</span>
+                </button>
+
+                <button type="button" class="btn btn-events" id="btn-events">
+                    <span class="btn-icon" aria-hidden="true">📅</span>
+                    <span class="btn-label">Events</span>
+                </button>
+
+                <button type="button" class="btn btn-emergency" id="btn-emergency">
+                    <span class="btn-icon" aria-hidden="true">🚨</span>
+                    <span class="btn-label">Emergency Call</span>
+                </button>
+            </div>
+        </section>
+            <section aria-labelledby="reminders-heading">
+      <h2 id="reminders-heading">My Reminders</h2>
+      <div id="reminders-display"></div>
+    </section>
+    </main>
+
+   <script src="js/storage.js"></script>
+    <script src="js/reminders.js"></script>
+<script src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(reg => console.log('Service Worker registered!', reg))
+        .catch(err => console.error('Service Worker failed:', err));
+    });
+  }
+</script>
+</body>
+</html>
